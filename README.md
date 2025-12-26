@@ -14,8 +14,6 @@ No frontend and no authentication are implemented, as required.
 - Node.js
 - Express.js
 - SQLite
-- No frontend
-- No authentication
 
 ---
 
@@ -24,7 +22,6 @@ No frontend and no authentication are implemented, as required.
 Applications follow a strict state machine:
 CREATED → ELIGIBLE → APPLIED
 CREATED → REJECTED
-
 
 ### Rules
 - State transitions are validated
@@ -65,8 +62,6 @@ Eligibility is checked when a candidate applies to a job.
 A simple rule-based ATS scoring mechanism is implemented:
 - Keyword matching in resume text
 - Fixed scoring logic
-
-The goal is **structure and flow**, not ML accuracy.
 
 ---
 
@@ -124,18 +119,13 @@ Local URLs (http://localhost:3000) are intentional.
 
 POST /jobs/:job_id/apply
 
-URL
-
+URL:-
 http://localhost:3000/jobs/1/apply
 
-
-Headers
-
+Headers:-
 Content-Type: application/json
 
-
 Body (raw → JSON)
-
 {
   "user_id": "user_123",
   "cgpa": 8.1,
@@ -143,26 +133,22 @@ Body (raw → JSON)
   "resume_text": "node backend sql experience"
 }
 
-
-Example Response
-
+Example Response:-
 {
   "application_id": 1,
   "state": "ELIGIBLE",
   "ats_score": 60
 }
 
+
 2️- Fetch Application
 
 GET /applications/:application_id
 
-URL
-
+URL:-
 http://localhost:3000/applications/1
 
-
-Example Response
-
+Example Response:-
 {
   "current_state": "APPLIED",
   "ats_score": 60,
@@ -181,33 +167,26 @@ Example Response
   ]
 }
 
+
 3️- Transition Application State
 
 POST /applications/:application_id/transition
 
-URL
-
+URL:-
 http://localhost:3000/applications/1/transition
 
-
-Headers
-
+Headers:-
 Content-Type: application/json
 
-
-Body
-
+Body:-
 {
   "to_state": "APPLIED"
 }
 
-
 Success Response
-
 {
   "message": "State transitioned successfully"
 }
-
 
 Invalid Transition Response
 
