@@ -12,7 +12,7 @@ app.use("/jobs", require("./routes/jobs"));
 app.use("/", require("./routes/applications"));
 
 app.get("/", (req, res) => {
-  res.send("Job Application Pipeline API is running");
+  res.send("Job Application API is running");
 });
 
 app.listen(3000, () => {
